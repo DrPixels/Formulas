@@ -79,11 +79,12 @@ int main()
     
     //To check if the LDE has solution
     if (c % greatestCD == 0) {
-        cout << "The GCD divides the constant. The LDE has solution."<< endl;
+        cout << greatestCD <<"|"<<c << endl;
+        cout << "The GCD divides the constant. The LDE has a solution."<< endl << endl;
         hasSolution = true;
     }
     else {
-        cout << "The GCD do not divide the constant. The LDE has no solution." << endl;
+        cout << "The GCD does not divide the constant. The LDE has no solution." << endl;
         hasSolution = false;
     }
     
