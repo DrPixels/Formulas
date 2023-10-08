@@ -25,6 +25,14 @@ int main()
     int x_naught = 0;
     int y_naught = 0;
     
+    //For checking
+    int t;
+    int xgen = 0;
+    int ygen = 0;
+    char yn;
+    int xcheck = 0;
+    int ycheck = 0;
+    
     
     bool hasSolution;
     
@@ -115,7 +123,7 @@ int main()
         }
     }
     
-    
+    cout <<"----- STEP 1 & STEP 2 -----" << endl<< endl;
     for (int i = 0; i < mResult.size() ; i++) {
         if (i == 0) {
             cout << "m\t" << "n\t" << "q\t" << "r\t" << "x'\t" << "y'" <<  endl;
@@ -131,22 +139,71 @@ int main()
         
     }
     
-    cout << endl << "GCD: " << greatestCD << endl;
-    cout << "x' = " << bezoutX[0] << " & y' = " << bezoutY[0];
+    cout << endl << "Greatest Common Denominator: " << greatestCD << endl;
+    cout << "Bezout's Coefficient: " << endl;
+    cout << "\tx' = " << bezoutX[0] << endl;
+    cout << "\ty' = " << bezoutY[0];
     
-    //Compute x0, y0
+    cout << endl << endl << "----- STEP 3 -----" << endl<< endl;
+    
     k = c/greatestCD;
     x_naught = xprime * k;
     y_naught = yprime * k;
     
-    cout << endl << "Value of k: " << k << endl;
-    cout << "Value of [X0] xnaught = " << x_naught << endl;
-    cout << "Value of [Y0] ynaught = " << y_naught << endl << endl << endl;
+    cout << "Process:" << endl;
+    cout << "k = c/d" << endl;
+    cout << "\tk = " << c << "/" <<greatestCD << " = " <<  c/greatestCD << endl;
+    cout << "x_naught = x' * k" << endl;
+    cout << "\t x' = " << xprime << " * " << k << " = " << xprime * k << endl;
+        cout << "y_naught = y' * k" << endl;
+    cout << "\t y' = " << yprime << " * " << k << " = " << yprime * k << endl;
+    //Compute x0, y0
+    
+    cout << endl << "Value of [x0] = " << x_naught << endl;
+    cout << "Value of [y0] = " << y_naught << endl << endl << endl;
+    
+    cout <<"----- LAST STEP -----" << endl<< endl;
     
     cout << "General Solution" << endl;
-    cout << "X = " << x_naught << " + " << (b/greatestCD) << "t" << endl;
-    cout << "Y = " << y_naught << " - " << (a/greatestCD) << "t";
+    cout << "X = x0 + b/d(t)" << endl;
+    cout << "\tX = " << x_naught << " + " << b << "/" << greatestCD << "(t)" << endl;
+    cout << "\tX = " << x_naught << " + " << (b/greatestCD) << "t" << endl;
+    cout << "Y = y0 - a/d(t)" << endl;
+    cout << "\tY= " << y_naught << " - " << a << "/" << greatestCD << "(t)" << endl;
+    cout << "\tY = " << y_naught << " - " << (a/greatestCD) << "t"<< endl;
+    
+    xgen = b/greatestCD;
+    ygen = a/greatestCD;
+    
+    cout << endl<<  "FINAL ANSWER:"<< endl;
+        cout << "\tX = " << x_naught << " + " << xgen << "t" << endl;
+            cout << "\tY = " << y_naught << " - " << ygen << "t"<< endl << endl;
     }
+    
+    if (hasSolution == true) {
+        do {
+            cout << endl<< "FOR CHECKING!" << endl;
+            cout << "Enter a value of t: ";
+            cin >> t;
+            
+            cout << "t = " << t << endl;
+            
+            xcheck = x_naught + (b/greatestCD)*t;
+            ycheck = y_naught - (a/greatestCD)*t;
+            
+            cout << "\tx = " << x_naught << " + " << "(" << b << "/" <<greatestCD << ") * " << t << endl;
+            cout << "\tx = " << xcheck << endl << endl;
+            
+            cout << "\ty = " << y_naught << " - " << "(" << a << "/" <<greatestCD << ") * " << t << endl;
+            cout << "\ty = " << ycheck << endl << endl;
+            
+            cout << a <<"(" << xcheck << ") + " << b <<"(" << ycheck << ")" << " = " << a*xcheck + b*ycheck << endl << endl;
+            
+            cout << "Enter another number? (y/n): ";
+            cin >> yn;
+        }  while(yn == 'y');
+    }
+
     
     return 0;
 }
