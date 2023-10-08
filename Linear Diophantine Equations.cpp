@@ -36,7 +36,7 @@ int main()
     vector<int> bezoutY;
 
     
-    cout<<"Euclidean Algorithm" << endl;
+    cout<<"SOLVING LINEAR DIOPHANTINE EQUATIONS" << endl << endl;
     cout<<"Enter the value of x: ";
     cin >> x;
     cout << "Enter the value of y: ";
